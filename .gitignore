@@ -1,0 +1,4 @@
+*.private.js
+node_modules
+*.sublime*
+*.log

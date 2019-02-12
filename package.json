@@ -1,0 +1,55 @@
+{
+  "name": "ebay-promised",
+  "version": "2.3.0",
+  "description": "promise wrapped Ebay requests with sensible response parsers",
+  "main": "./lib/index.js",
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "debug": "^2.1.1",
+    "ecjson": "^0.1.2",
+    "es6-error": "^3.0.1",
+    "object-to-xml": "1.0.0",
+    "request": "^2.74.0",
+    "request-promise": "^4.1.0",
+    "simple-rate-limiter": "^0.2.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.11.6",
+    "chai": "^3.5.0",
+    "mocha": "^3.0.0"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel-register --check-leaks -t 20000 ./test/*.spec.js",
+    "watch": "npm run clean && babel --watch --source-maps inline --out-dir=$npm_package_config_out $npm_package_config_in",
+    "test:watch": "mocha --compilers js:babel-register --check-leaks -t 20000 --watch --growl ./test/*.spec.js",
+    "compile": "babel --source-maps inline --out-dir=$npm_package_config_out $npm_package_config_in",
+    "clean": "rm -rf $npm_package_config_out",
+    "encrypt": "travis encrypt-file test/fixtures/auth.private.js test/fixtures/auth.private.js.enc --add",
+    "preversion": "npm run clean && npm run compile",
+    "postpublish": "git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ondreian/ebay-promised.git"
+  },
+  "keywords": [
+    "ebay",
+    "api"
+  ],
+  "author": "Benjamin Clos",
+  "license": "ISC",
+  "config": {
+    "out": "lib",
+    "in": "es6"
+  },
+  "bugs": {
+    "url": "https://github.com/ondreian/ebay-promised/issues"
+  },
+  "homepage": "https://github.com/ondreian/ebay-promised#readme",
+  "directories": {
+    "test": "test"
+  }
+}
